@@ -1,13 +1,15 @@
 <ion-view>
-
-<ion-content class="padding">
-  <div class="padding" ng-repeat="song in vm.songs">
-    <div class="item item-image padding">
-      <img ng-src="{{song.image_large}}">
-      <h2>{{song.title}}</h2>
-      <label>{{song.artist}}</label>
-    </div>
-  </div>
-</ion-content>
-
+  <ion-content class="padding">
+    <td-cards class="relative">
+      <td-card class="absolute" ng-show="$first" ng-repeat="song in vm.songs" on-swipe-left="vm.addToFavorites()" on-swipe-right="vm.removeSong()">
+        <div class="padding" >
+          <div class="item item-image padding">
+            <img ng-src="{{song.image_large}}">
+            <h2>{{song.title}}</h2>
+            <label>{{song.artist}}</label>
+          </div>
+        </div>
+      </td-card>
+    </td-cards>
+  </ion-content>
 </ion-view>

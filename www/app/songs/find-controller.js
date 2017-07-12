@@ -4,9 +4,9 @@
     .module('starter')
     .controller('FindController', FindController);
 
-    FindController.$inject=['$scope'];
+    FindController.$inject=['$scope','$rootScope'];
 
-    function FindController($scope){
+    function FindController($scope, $rootScope){
       var vm=this;
       vm.songs = [
          {
@@ -28,5 +28,22 @@
             "image_large":"https://i.scdn.co/image/4e47ee3f6214fabbbed2092a21e62ee2a830058a"
          }
        ];
+
+       vm.addToFavorites=addToFavorites;
+       vm.removeSong=removeSong;
+
+      function addToFavorites(){
+        $rootScope.favorite.push(vm.songs[0]);
+        vm.songs.splice(0,1);
+        console.log(vm.songs.length);
+        console.log($rootScope.favorite.length);
+      }
+
+      function removeSong(){
+        vm.songs.splice(0,1);
+        console.log(vm.songs.length);
+        console.log($rootScope.favorite.length);
+      }
+
     }
 })();
