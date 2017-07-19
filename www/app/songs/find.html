@@ -1,7 +1,7 @@
 <ion-view>
   <ion-content class="padding">
     <td-cards class="relative">
-      <td-card class="absolute" ng-show="$first" ng-repeat="song in vm.songs" on-swipe-left="vm.addToFavorites()" on-swipe-right="vm.removeSong()">
+      <td-card class="absolute" ng-repeat="song in vm.songs | orderBy: '$index':true" on-swipe-left="vm.addToFavorites()" on-swipe-right="vm.removeSong()">
         <div class="padding" >
           <div class="item item-image padding">
             <img ng-src="{{song.image_large}}">
