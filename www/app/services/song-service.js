@@ -14,7 +14,7 @@
     function getSongs(){
       return $http({
         method : 'GET',
-        url : API.url + '/recommendations'
+        url : 'https://ionic-songhop.herokuapp.com/recommendations'
       })
       .then(function(response){
         return response;

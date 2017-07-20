@@ -14,17 +14,19 @@
         StatusBar.styleDefault();
       }
       $rootScope.favorite=[];
+      $rootScope.token = null;
 
       FCMPlugin.getToken(function(token){
         console.log(token);
+        $rootScope.token = token;
       });
       FCMPlugin.onNotification(function(data){
         if(data.wasTapped){
           //Notification was received on device tray and tapped by the user.
-          alert( JSON.stringify(data) );
+          alert( data.body );
         }else{
           //Notification was received in foreground. Maybe the user needs to be notified.
-          alert( JSON.stringify(data) );
+          alert(data.body);
         }
       });
     });
